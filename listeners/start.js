@@ -6,7 +6,7 @@ module.exports = (bot, addUser) => {
         bot.sendMessage(chatId, "Welcome! Please provide your email address to receive notifications for new emails.");
 
         bot.on('message', (msg) => {
-            const emailAddress = msg.text.trim().toLowerCase();
+            const emailAddress = msg.text.trim().toLowerCase(); // Convert to lowercase
 
             // Check if the message is a valid email format
             if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailAddress)) {
@@ -38,7 +38,7 @@ module.exports = (bot, addUser) => {
 
         // Find emails matching the address, sorted by the latest timestamp
         const userEmails = emails
-            .filter((email) => email.emailAddress.toLowerCase() === emailAddress)
+            .filter((email) => email.emailAddress.toLowerCase() === emailAddress) // Convert stored email to lowercase
             .sort((a, b) => b.timestamp - a.timestamp);
 
         // Return the latest email content if found

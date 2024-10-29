@@ -2,6 +2,7 @@ require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
@@ -9,7 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 
 let users = [];
-const fs = require('fs');
 const usersFile = 'users.json';
 
 // Load or initialize user data
@@ -31,7 +31,6 @@ function addUser(chatId, username, emailAddress) {
 
 // Import listeners and API routes
 require('./listeners/start')(bot, addUser);
-require('./listeners/message')(bot); // for other messages
 require('./apis/email')(app, bot, users, saveUsers);
 
 // Start the Express server

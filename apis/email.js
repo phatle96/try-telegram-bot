@@ -14,7 +14,7 @@ module.exports = (app, bot, users, saveUsers) => {
 
     function notifyUsers(emailAddress, content) {
         users.forEach((user) => {
-            if (user.emailAddress === emailAddress) {
+            if (user.emailAddress.toLowerCase() === emailAddress.toLowerCase()) {
                 bot.sendMessage(user.chatId, `New email content for ${emailAddress}:\n\n${content}`);
             }
         });
