@@ -34,7 +34,7 @@ require('./listeners/start')(bot, addUser);
 require('./apis/email')(app, bot, users, saveUsers);
 
 // Start the Express server
-const PORT = 3000;
+const PORT = 3003;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
