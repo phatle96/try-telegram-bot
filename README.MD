@@ -1,0 +1,1 @@
+# The fastest way to init a telegram bot to broadcast the message
